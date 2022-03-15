@@ -7,58 +7,85 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.a2censo.app.domain.Campaign;
+import com.a2censo.app.domain.Orden;
 import com.a2censo.app.service.ICampaignService;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping
 public class CampaignController {
-	
-	//Para inyectar nuestra clase service
-		@Autowired
-		private ICampaignService campaignService;
-		
-		//Mapear a un endpoint
-		//Queremos recibir un parametro para hacer la consulta
-		//Usamos las llaves, y el parametro tiene que coincidir con el argumento	
 
-		//Metodos descubiertos
-		@GetMapping("/criterio/{campo}/tipo/{orden}")
-		public List<String> nombres(@PathVariable String campo,@PathVariable String orden){
+	// Para inyectar nuestra clase service
+	@Autowired
+	private ICampaignService campaignService;
+
+	// Mapear a un endpoint
+	// Queremos recibir un parametro para hacer la consulta
+	// Usamos las llaves, y el parametro tiene que coincidir con el argumento
+
+	// Metodos descubiertos
+	@GetMapping("/criterio/{campo}/tipo/{orden}")
+	public List<String> nombres(@PathVariable String campo, @PathVariable String orden) {
+
+		List<String> result = null;
+		if (campo.equals("amount")) {
+			if (orden.equals("MayorMenor")) {
+				result = campaignService.findAmountDesc();
+			} else if (orden.equals("MenorMayor")) {
+				result = campaignService.findAmountAsc();
+			}
+		} else if (campo.equals("requestedAmount")) {
+			if (orden.equals("MayorMenor")) {
+				result = campaignService.findRequestedAmountDesc();
+			} else if (orden.equals("MenorMayor")) {
+				result = campaignService.findRequestedAmountAsc();
+			}
+		}
+
+		return result;
+	}
+
+	@GetMapping("/inicio")
+	public String allCampaigns(Model model) {
+		List<Campaign> listCampaign = campaignService.allCampaigns();
+		model.addAttribute("listCampaign", listCampaign);
+		return "inicio";
+	}
+
+	@GetMapping("/index")
+	public String valor(Model model) {
+		return "valor";
+	}
+
+	@GetMapping("/valor")
+		public String index(Orden orden,Model model){
+			model.addAttribute("criterio", orden.getCriterio());
+			model.addAttribute("orden", orden.getOrden());
 			
 			List<String> result = null;
-			if(campo.equals("amount")) {
-				if(orden.equals("MayorMenor")) {
+			
+			if(orden.getCriterio().equalsIgnoreCase("amount")) {
+				//ordenar por menor o mayor
+				if(orden.getOrden().equalsIgnoreCase("mayor")) {
 					result = campaignService.findAmountDesc();
-				}else if(orden.equals("MenorMayor")) {
+				}else if(orden.getOrden().equalsIgnoreCase("menor")) {
 					result = campaignService.findAmountAsc();
 				}
-			}
-			else if(campo.equals("requestedAmount")) {
-				if(orden.equals("MayorMenor")) {
+			}else if(orden.getCriterio().equalsIgnoreCase("requestedamount")) {
+				//ordenar por menor o mayor
+				if(orden.getOrden().equalsIgnoreCase("mayor")) {
 					result = campaignService.findRequestedAmountDesc();
-				}else if(orden.equals("MenorMayor")) {
+				}else if(orden.getOrden().equalsIgnoreCase("menor")) {
 					result = campaignService.findRequestedAmountAsc();
 				}
 			}
-			
-			return result;
+			model.addAttribute("listNameCampaigns", result);
+			return "resultado";
 		}
 
-		@RequestMapping(value="/inicio")
-		public String allCampaigns(Model model){
-			 List<Campaign> listCampaign = campaignService.allCampaigns();
-			 model.addAttribute("listCampaign",listCampaign);
-			return "inicio";
-		}
-		
-		@GetMapping(value="/index")
-		public String index() {
-			return "index";
-		}
-		
-		
 }

@@ -17,21 +17,23 @@
 	<h2 class="text-center">Listado empresas</h2>
 
 	<head>
+	<form th:action="@{/inicio}" method="get">
 		<div class="container d-flex justify-content-center row" >
 			<select class="form-select col m-2" aria-label="Default select example">
 				<option selected>Seleccione el criterio</option>
-				<option value="1">Amount</option>
-				<option value="2">Requested Amount</option>
+				<option value="Amount" name="criterio">Amount</option>
+				<option value="RequestedAmount" name="criterio">Requested Amount</option>
 			</select>
 			<select class="form-select col m-2" aria-label="Default select example">
 				<option selected>Ordernar por</option>
-				<option value="1">Mayor a menor</option>
-				<option value="2">Menor a mayor</option>
+				<option value="Mayor a menor" name="orden">Mayor a menor</option>
+				<option value="Menor a mayor" name="orden">Menor a mayor</option>
 			</select>
-			<div class="col btn btn-primary m-2 w-10">
-				holap
+			<div class="col m-2 w-10">
+				<input type="submit" class="col btn btn-primary">
 			</div>
 		</div>
+			</form>
 	</head>
 	<br>
 	<br>
