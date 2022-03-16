@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.a2censo.app"},{"l":"com.a2censo.app.controller"},{"l":"com.a2censo.app.domain"},{"l":"com.a2censo.app.repository"},{"l":"com.a2censo.app.service"}]

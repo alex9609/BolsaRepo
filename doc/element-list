@@ -1,0 +1,5 @@
+com.a2censo.app
+com.a2censo.app.controller
+com.a2censo.app.domain
+com.a2censo.app.repository
+com.a2censo.app.service

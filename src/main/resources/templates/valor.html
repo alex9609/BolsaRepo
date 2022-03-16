@@ -18,21 +18,43 @@
 
 	<head>
 		<form th:action="@{/valor}" method="get">
-		<div class="container d-flex justify-content-center row" >
-			<select class="form-select col m-2" aria-label="Default select example" name="criterio">
-				<option value="Amount" >Amount</option>
-				<option value="RequestedAmount" >Requested Amount</option>
-			</select>
-			<select class="form-select col m-2" aria-label="Default select example" name="orden">
-				<option  value="Mayor">Mayor a menor</option>
-				<option  value="Menor">Menor a mayor</option>
-			</select>
-			<div class="col m-2 w-10">
-				<input type="submit" class="col btn btn-primary">
+			<div class="container d-flex justify-content-center row">
+				<select class="form-select col m-2" aria-label="Default select example" name="criterio">
+					<option value="Amount">Amount</option>
+					<option value="RequestedAmount">Requested Amount</option>
+				</select>
+				<select class="form-select col m-2" aria-label="Default select example" name="orden">
+					<option value="Mayor">Mayor a menor</option>
+					<option value="Menor">Menor a mayor</option>
+				</select>
+				<div class="col m-2 w-10">
+					<input type="submit" class="col btn btn-primary">
+				</div>
 			</div>
-		</div>
-	</form>
+		</form>
 	</head>
+	<br>
+	<br>
+	<div class="container d-flex justify-content-center ">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Requested amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="campaign: ${listCampaign}">
+					<td th:text="${campaign.Name}"></td>
+					<td th:text="${campaign.Amount}"></td>
+					<td th:text="${campaign.RequestedAmount}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </body>
+
 
 </html>

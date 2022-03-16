@@ -9,29 +9,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="campaign")
-@Table(name="campaign",catalog="a2censo",schema="")
-public class Campaign implements Serializable{
-	
-	/**
-	 * 
-	 */
+/**
+ * Clase campaign que es nuestra entidad para poder manejar los datos
+ * que componen una campaign.
+ * Contiene sus respetivos getters y setters
+ * 
+ * 
+ * @author alexa
+ *
+ */
+
+@Entity(name = "campaign")
+@Table(name = "campaign", catalog = "a2censo", schema = "")
+public class Campaign implements Serializable {
+
+
 	private static final long serialVersionUID = 5324401366389459792L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idcampaign;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="amount")
+
+	@Column(name = "amount")
 	private Double amount;
-	
-	@Column(name="requested_amount")
+
+	@Column(name = "requested_amount")
 	private Double requestedAmount;
-	
-	@Column(name="adminRate")
+
+	@Column(name = "adminRate")
 	private Double adminRate;
 
 	public Long getIdcampaign() {
@@ -73,7 +81,5 @@ public class Campaign implements Serializable{
 	public void setAdminRate(Double adminRate) {
 		this.adminRate = adminRate;
 	}
-	
-	
 
 }
