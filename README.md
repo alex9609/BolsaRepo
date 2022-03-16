@@ -2,6 +2,8 @@
 
 Prueba técnica bolsa de valores.
 
+Versión de Spring boot 2.6.4
+
 Para la realización de esta prueba se utilizaron las siguientes dependencias y versiones de spring boot:
 
  * MySQL Driver
