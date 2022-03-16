@@ -17,7 +17,7 @@ Para la realización de esta prueba se utilizaron las siguientes dependencias y 
  * 
  * BolsaValoresPruebaScript
  * 
- * Nombre del Script de la base de datos: a2censo
+ * Nombre del de la base de datos: a2censo
  * Nombre de la tabla : campaign
  * 
  * Modificacion del nombre del atributo:
@@ -30,4 +30,4 @@ Para ingresar al funcionamiento de la aplicación se debe ingresar la ulr: local
 Para poder ver el listado: 
 Seleccionar el criterio de busqueda en el select ya sea por amount o requested amount
 Seleccionar por orden de busquedad en el select ya sea de Menor a mayor, Mayor a menor
-
+Oprimir el botón enviar y nos muestra la lista de empresas
