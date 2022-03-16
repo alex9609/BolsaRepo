@@ -13,7 +13,7 @@ Para la realización de esta prueba se utilizaron las siguientes dependencias y 
  * Thymeleaf 
  * 
  * Version de la base de datos utilizada MySQL 8
- * La base de datos utilizada se encuentra en resources con el nombre de :
+ * La base de datos utilizada se encuentra en ./src/main/resources con el nombre de :
  * 
  * BolsaValoresPruebaScript
  * 
