@@ -1,0 +1,18 @@
+name: Say hello # Nombre
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-18.04
+
+    #Pasos que tiene que dar
+    steps:
+      #Le podemos poner un nombre al mensaje
+      - name: Echo the message
+        #Que se va a ejecutar
+        run: |
+          echo "Hola alex!"
